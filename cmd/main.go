@@ -1,6 +1,7 @@
 package main
 
 import (
+	"MinecraftDiscordBot/api"
 	"errors"
 	"flag"
 	"fmt"
@@ -38,6 +39,7 @@ var (
 	defaultMemberPermissions int64 = discordgo.PermissionManageServer
 
 	commands = []*discordgo.ApplicationCommand{
+		api.StartCommand(),
 		{
 			Name: "basic-command",
 			// All commands and options must have a description
@@ -222,6 +224,7 @@ var (
 	}
 
 	commandHandlers = map[string]func(s *discordgo.Session, i *discordgo.InteractionCreate){
+		"start": api.StartHandler,
 		"basic-command": func(s *discordgo.Session, i *discordgo.InteractionCreate) {
 			s.InteractionRespond(i.Interaction, &discordgo.InteractionResponse{
 				Type: discordgo.InteractionResponseChannelMessageWithSource,
