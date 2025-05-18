@@ -1,3 +1,11 @@
 .env
 variables.tf
 tmp/
+
+.terraform/
+!.terraform/main.tf
+!.terraform/module.tf
+!.terraform/variables.example.tf
+!.terraform/ec2/ec2.tf
+!.terraform/ec2/sg.tf
+!.terraform/ec2/variables.example.tf
