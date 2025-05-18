@@ -4,10 +4,11 @@ WORKDIR /app
 
 RUN go install github.com/air-verse/air@latest
 
-COPY ./go.mod ./
+COPY ./go.mod ./go.sum ./
 RUN go mod download
 
 COPY ./.air.toml ./
+COPY ./api/ ./api/
 COPY ./cmd/ ./cmd/
 
 EXPOSE 8000
