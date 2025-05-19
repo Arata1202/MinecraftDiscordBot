@@ -1,3 +1,9 @@
+<div align="right">
+
+![GitHub License](https://img.shields.io/github/license/Arata1202/MinecraftDiscordBot)
+
+</div>
+
 ## Getting Started
 
 ### Create Resources on AWS EC2 with Terraform
