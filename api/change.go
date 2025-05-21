@@ -47,10 +47,10 @@ func ChangeHandler(s *discordgo.Session, i *discordgo.InteractionCreate) {
 		switch instanceType {
 		case "t3a":
 			url = os.Getenv("LAMBDA_CHANGE_T3A_URL")
-			message = "インスタンスタイプを t3a.medium に変更し、サーバーの起動を開始します"
+			message = "インスタンスタイプを t3a.medium （低スペック） に変更し、サーバーの起動を開始します"
 		case "c7i":
 			url = os.Getenv("LAMBDA_CHANGE_C7I_URL")
-			message = "インスタンスタイプを c7i.xlarge に変更し、サーバーの起動を開始します"
+			message = "インスタンスタイプを c7i.xlarge （高スペック） に変更し、サーバーの起動を開始します"
 		}
 	}
 
