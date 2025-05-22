@@ -11,16 +11,53 @@ func StartCommand() *discordgo.ApplicationCommand {
 	return &discordgo.ApplicationCommand{
 		Name:        "start",
 		Description: "サーバを起動します",
+		Options: []*discordgo.ApplicationCommandOption{
+			{
+				Type:        discordgo.ApplicationCommandOptionString,
+				Name:        "type",
+				Description: "インスタンスタイプ",
+				Required:    true,
+				Choices: []*discordgo.ApplicationCommandOptionChoice{
+					{
+						Name:  "t3a.medium （低スペック）",
+						Value: "t3a",
+					},
+					{
+						Name:  "c7i.xlarge （高スペック）",
+						Value: "c7i",
+					},
+				},
+			},
+		},
 	}
 }
 
 func StartHandler(s *discordgo.Session, i *discordgo.InteractionCreate) {
-	url := os.Getenv("LAMBDA_START_URL")
+	options := i.ApplicationCommandData().Options
+	optionMap := make(map[string]*discordgo.ApplicationCommandInteractionDataOption, len(options))
+	for _, opt := range options {
+		optionMap[opt.Name] = opt
+	}
+
+	var url string
+	var message string
+
+	if option, ok := optionMap["type"]; ok {
+		instanceType := option.StringValue()
+		switch instanceType {
+		case "t3a":
+			url = os.Getenv("LAMBDA_CHANGE_T3A_URL")
+			message = "サーバーの起動を開始します\nインスタンスタイプ：t3a.medium （低スペック）"
+		case "c7i":
+			url = os.Getenv("LAMBDA_CHANGE_C7I_URL")
+			message = "サーバーの起動を開始します\nインスタンスタイプ：c7i.xlarge （高スペック）"
+		}
+	}
 
 	s.InteractionRespond(i.Interaction, &discordgo.InteractionResponse{
 		Type: discordgo.InteractionResponseChannelMessageWithSource,
 		Data: &discordgo.InteractionResponseData{
-			Content: "サーバの起動を開始します",
+			Content: message,
 		},
 	})
 

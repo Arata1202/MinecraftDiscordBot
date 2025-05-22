@@ -41,7 +41,6 @@ var (
 	commands = []*discordgo.ApplicationCommand{
 		api.StartCommand(),
 		api.StopCommand(),
-		api.ChangeCommand(),
 		{
 			Name: "basic-command",
 			// All commands and options must have a description
@@ -226,9 +225,8 @@ var (
 	}
 
 	commandHandlers = map[string]func(s *discordgo.Session, i *discordgo.InteractionCreate){
-		"start":  api.StartHandler,
-		"stop":   api.StopHandler,
-		"change": api.ChangeHandler,
+		"start": api.StartHandler,
+		"stop":  api.StopHandler,
 		"basic-command": func(s *discordgo.Session, i *discordgo.InteractionCreate) {
 			s.InteractionRespond(i.Interaction, &discordgo.InteractionResponse{
 				Type: discordgo.InteractionResponseChannelMessageWithSource,
