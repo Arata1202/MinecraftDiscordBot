@@ -44,12 +44,13 @@ func StartHandler(s *discordgo.Session, i *discordgo.InteractionCreate) {
 
 	if option, ok := optionMap["type"]; ok {
 		instanceType := option.StringValue()
+		baseURL := os.Getenv("LAMBDA_START_URL")
+		url = baseURL + "/?type=" + instanceType
+
 		switch instanceType {
 		case "t3a":
-			url = os.Getenv("LAMBDA_CHANGE_T3A_URL")
 			message = "サーバーの起動を開始します\nインスタンスタイプ：t3a.medium （低スペック）"
 		case "c7i":
-			url = os.Getenv("LAMBDA_CHANGE_C7I_URL")
 			message = "サーバーの起動を開始します\nインスタンスタイプ：c7i.xlarge （高スペック）"
 		}
 	}
