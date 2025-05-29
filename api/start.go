@@ -45,7 +45,7 @@ func StartHandler(s *discordgo.Session, i *discordgo.InteractionCreate) {
 	if option, ok := optionMap["type"]; ok {
 		instanceType := option.StringValue()
 		baseURL := os.Getenv("LAMBDA_START_URL")
-		url = baseURL + "/?type=" + instanceType
+		url = baseURL + "?type=" + instanceType
 
 		switch instanceType {
 		case "t3a":
