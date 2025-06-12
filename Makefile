@@ -4,7 +4,4 @@ up:
 down:
 	@docker compose down
 
-logs:
-	@docker compose logs minecraft
-
-.PHONY: up down logs
+.PHONY: up down

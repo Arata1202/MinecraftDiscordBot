@@ -35,14 +35,11 @@ mv .env.example .env
 vi .env
 
 # Set up EC2
-./.aws/ec2.sh
+./.linux/setup.sh
 
-# Start server
+# Start the bot
 sudo make up
 
-# View logs
-sudo make logs
-
-# Stop server
+# Stop the bot
 sudo make down
 ```
