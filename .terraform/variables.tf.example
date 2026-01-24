@@ -22,3 +22,11 @@ variable "volume_type" {
 variable "volume_size" {
   default = "8"
 }
+
+variable "volume_encrypted" {
+  default = true
+}
+
+variable "volume_kms_key_id" {
+  default = null
+}
