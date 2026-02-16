@@ -11,10 +11,6 @@ variable "instance_type" {
   default = "t4g.small"
 }
 
-variable "key_name" {
-  default = "minecraft_key"
-}
-
 variable "volume_type" {
   default = "gp3"
 }

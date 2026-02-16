@@ -1,7 +1,7 @@
 resource "aws_instance" "minecraft_bot_server" {
   ami                    = var.ami
   instance_type          = var.instance_type
-  key_name               = var.key_name
+  iam_instance_profile   = aws_iam_instance_profile.minecraft_bot_iam_instance_profile.name
   vpc_security_group_ids = [aws_security_group.minecraft_bot_sg.id]
 
   root_block_device {
