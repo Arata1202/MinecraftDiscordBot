@@ -10,4 +10,8 @@ services:
     working_dir: '/app'
     ports:
       - '8000:8000'
-    env_file: .env
+    environment:
+      - BOT_TOKEN=${BOT_TOKEN}
+      - LAMBDA_START_URL=${LAMBDA_START_URL}
+      - LAMBDA_STOP_URL=${LAMBDA_STOP_URL}
+      - GUILD_ID=${GUILD_ID}

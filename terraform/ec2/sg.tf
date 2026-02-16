@@ -2,6 +2,8 @@ resource "aws_security_group" "minecraft_bot_sg" {
   name        = "minecraft_bot_sg"
   description = "minecraft_bot_sg"
 
+  ingress = []
+
   egress {
     from_port   = 0
     to_port     = 0
