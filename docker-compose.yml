@@ -15,3 +15,4 @@ services:
       - LAMBDA_START_URL=${LAMBDA_START_URL}
       - LAMBDA_STOP_URL=${LAMBDA_STOP_URL}
       - GUILD_ID=${GUILD_ID}
+    restart: unless-stopped
