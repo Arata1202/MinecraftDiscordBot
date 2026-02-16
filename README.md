@@ -34,8 +34,8 @@ cd MinecraftDiscordBot
 mv .env.example .env
 vi .env
 
-# Set up EC2
-./.linux/setup.sh
+# Set up Ubuntu
+./ubuntu/setup.sh
 
 # Start the bot
 sudo make up
