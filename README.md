@@ -11,7 +11,7 @@
 ```bash
 # Clone repository
 git clone git@github.com:Arata1202/MinecraftDiscordBot.git
-cd MinecraftDiscordBot/.terraform
+cd MinecraftDiscordBot/terraform
 
 # Prepare and edit variables file
 mv variables.example.tf variables.tf
